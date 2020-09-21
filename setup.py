@@ -6,7 +6,6 @@ import os
 import re
 import sys
 
-
 # When creating the sdist, make sure the django.mo file also exists:
 if 'sdist' in sys.argv or 'develop' in sys.argv:
     os.chdir('polymorphic_tree')
@@ -38,15 +37,21 @@ setup(
     version=find_version('polymorphic_tree', '__init__.py'),
     license='Apache 2.0',
 
+    python_requires='>=3',
     install_requires=[
-        'django-polymorphic>=1.3',  # Latest to support Django 1.8 and 1.10
-        'django-mptt>=0.8.0',
-        'django-tag-parser>=2.1',
+        'django-polymorphic>=3.0',  # Latest to support Django 1.8 and 1.10
+        'django-mptt>=0.11.0',
+        'django-tag-parser>=3.2',
         'future>=0.12.2',
     ],
     requires=[
-        'Django (>=1.8)',
+        'Django (>=3.1)',
     ],
+    extras_require={
+      'dev': [
+          'tox~=3.20',
+      ]
+    },
     description="A polymorphic mptt structure to display content in a tree.",
     long_description=read('README.rst'),
 
@@ -59,24 +64,19 @@ setup(
     packages=find_packages(),
     include_package_data=True,
 
+
     zip_safe=False,
     classifiers=[
-        'Development Status :: 5 - Production/Stable',
+        'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
         'Framework :: Django',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: Apache Software License',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
         'Framework :: Django',
-        'Framework :: Django :: 1.8',
-        'Framework :: Django :: 1.10',
-        'Framework :: Django :: 1.11',
-        'Framework :: Django :: 2.0',
+        'Framework :: Django :: 3.1',
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
         'Topic :: Software Development :: Libraries :: Python Modules',

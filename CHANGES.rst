@@ -1,3 +1,8 @@
+Changes in 1.5.1post1 (2020-01-04)
+----------------------------------
+* Fixed import for FieldNotFound in admin views
+* Updated example
+
 Changes in 1.5.1 (2020-01-04)
 -----------------------------
 

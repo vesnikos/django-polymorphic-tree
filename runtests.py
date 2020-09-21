@@ -6,7 +6,6 @@ from django.core.management import execute_from_command_line
 from django.conf import settings, global_settings as default_settings
 from os import path
 
-
 # python -Wd, or run via coverage:
 warnings.simplefilter('always', DeprecationWarning)
 
@@ -23,14 +22,14 @@ if not settings.configured:
     sys.path.insert(0, path.join(module_root, 'example'))
 
     settings.configure(
-        DEBUG = False,  # will be False anyway by DjangoTestRunner.
-        DATABASES = {
+        DEBUG=False,  # will be False anyway by DjangoTestRunner.
+        DATABASES={
             'default': {
                 'ENGINE': 'django.db.backends.sqlite3',
                 'NAME': ':memory:'
             }
         },
-        CACHES = {
+        CACHES={
             # By explicit since many tests also need the caching support
             'default': {
                 'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
@@ -59,7 +58,7 @@ if not settings.configured:
                 },
             },
         ],
-        INSTALLED_APPS = (
+        INSTALLED_APPS=(
             'django.contrib.auth',
             'django.contrib.contenttypes',
             'django.contrib.messages',
@@ -77,10 +76,9 @@ if not settings.configured:
             'django.contrib.messages.middleware.MessageMiddleware',
             'django.middleware.locale.LocaleMiddleware',  # / will be redirected to /<locale>/
         ),
-        ROOT_URLCONF = 'example.urls',
-        TEST_RUNNER = 'django.test.runner.DiscoverRunner',
+        ROOT_URLCONF='example.urls',
+        TEST_RUNNER='django.test.runner.DiscoverRunner',
     )
-
 
 DEFAULT_TEST_APPS = [
     'polymorphic_tree',
@@ -92,6 +90,7 @@ def runtests():
     test_apps = list(filter(lambda arg: not arg.startswith('-'), sys.argv[1:])) or DEFAULT_TEST_APPS
     argv = sys.argv[:1] + ['test', '--traceback'] + other_args + test_apps
     execute_from_command_line(argv)
+
 
 if __name__ == '__main__':
     runtests()

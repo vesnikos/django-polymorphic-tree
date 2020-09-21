@@ -11,7 +11,6 @@ to the class, to define custom classes for a column.
 
 This feature can be activated by simply extending the template stylable/admin/change_list.html
 """
-import django
 from django.conf import settings
 from django.contrib.admin.templatetags.admin_list import _boolean_icon, result_headers
 from django.core.exceptions import ObjectDoesNotExist, FieldDoesNotExist
